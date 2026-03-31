@@ -9,6 +9,5 @@ class Task(Base):
     description = Column(String, nullable=False)
     due_date = Column(String, nullable=False) # Storing as ISO 8601 string for simplicity
     status = Column(String, default="To-Do", nullable=False) 
-    
-    # Self-referential key for the "Blocked By" requirement
     blocked_by_id = Column(Integer, ForeignKey("tasks.id"), nullable=True)
+    sort_order = Column(Integer, default=-1)

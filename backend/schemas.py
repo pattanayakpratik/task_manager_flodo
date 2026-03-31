@@ -7,12 +7,18 @@ class TaskBase(BaseModel):
     due_date: str
     status: str
     blocked_by_id: Optional[int] = None
+    sort_order: int = -1
 
 class TaskCreate(TaskBase):
     pass
 
 class TaskResponse(TaskBase):
     id: int
+    sort_order: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class TaskReorder(BaseModel):
+    id: int
+    sort_order: int
